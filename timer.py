@@ -10,4 +10,4 @@ while True:
         end = timer()
         n -= 1
         break
-print(end - start) #seconds
+print(int(end - start)) #seconds
