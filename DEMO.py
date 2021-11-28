@@ -4,9 +4,10 @@ import time
 from typing import Counter
 from timeit import default_timer as timer
 
-
 root = Tk()
+
 times = []
+
 #create title label
 myLabel1 = Label(root, text="         Grocery Store")
 myLabel2 = Label(root, text="test")
@@ -22,10 +23,7 @@ capacity_bar.grid(row = 4, column = 2)
 count = 0
 waitlist = 0
 cap = 10 #capacity(for creating waiting list)
-global end 
-end = 0
-global start
-start = 0
+
 def enterClick():
     global count
     global myLabel3
@@ -73,10 +71,16 @@ def exitClick():
         myLabel4 = Label(root, text = "Total people waiting: "+str(waitlist))
         myLabel4.config(font = ('Helvatical bold', 20))
         myLabel4.grid(column=0, row=5)
-        
-        
-        
+        global end
         end = timer()
+
+        waitTime = end-start 
+        times.append(waitTime)
+        avgWaitTime = int(sum(times)/len(times))
+
+        if waitlist > 0:
+            waitTimeLabel = Label(root, text = "estimated wait-time is: "+ str(avgWaitTime)+" secs")
+            waitTimeLabel.grid(column = 0, row = 6)
     
     
     
@@ -97,12 +101,6 @@ def exitClick():
     myLabel3.grid(column=0, row=3)
 
 
-waitTime = (end)-(start) 
-times.append(waitTime)
-avgWaitTime = int(sum(times)/len(times))
-if waitlist > 0:
-        waitTimeLabel = Label(root, text = "estimated wait-time is: "+ str(avgWaitTime)+" secs")
-        waitTimeLabel.grid(column = 0, row = 6)
 
 enterButton = Button(root, text = "enter", padx=50, pady=10, command = enterClick)
 enterButton.grid(row=1,column=1)
