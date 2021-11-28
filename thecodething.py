@@ -3,17 +3,18 @@ from tkinter import ttk
 import time
 from typing import Counter
 from timeit import default_timer as timer
+from tkmacosx import Button
 
 
 root = Tk()
 
 #create title label
-myLabel1 = Label(root, text="         Grocery Store")
-myLabel2 = Label(root, text="test")
-myLabel1.config(font = ('Helvatical bold', 20))
+myLabel1 = Label(root, text="GROCERY STORE DEMO")
 
-myLabel1.grid(row=0, column=1)
-myLabel2.grid(row=1, column=0)
+myLabel1.config(font = ('Helvetica', "20", "bold"))
+
+myLabel1.grid(row=0, column=0)
+
 
 #create list to keep track in and out flow time
 times = []
@@ -106,9 +107,9 @@ def exitClick():
 
 
 
-enterButton = Button(root, text = "enter", padx=50, pady=10, command = enterClick)
-enterButton.grid(row=1,column=1)
+enterButton = Button(root, text = "enter", padx=50, pady=10, bg = "#5cd65c", command = enterClick)
+enterButton.grid(row=1,column=0)
 
-exitButton = Button(root,text="exit", padx = 50, pady = 10, command = exitClick)
+exitButton = Button(root, text="exit", padx = 50, pady = 10, bg = "#cc4400", command = exitClick)
 exitButton.grid(row=1, column=2)
 root.mainloop() 
