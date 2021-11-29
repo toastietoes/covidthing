@@ -22,17 +22,22 @@ capacity_bar.grid(row = 4, column = 2)
 count = 0
 waitlist = 0
 cap = 10 #capacity(for creating waiting list)
+
 global end 
 end = 0
+
 global start
 start = 0
+
 def enterClick():
     global count
     global myLabel3
     global waitlist
     #count how many people in store
+    
     if count < cap:
         count = count+1
+        capacity_bar['value']+=10
         myLabel3 = Label(root, text = "Total people in store: "+str(count))
         myLabel3.config(font = ('Helvatical bold', 20))
         myLabel3.grid(column=0, row=3)
@@ -45,7 +50,7 @@ def enterClick():
         start = timer()
     
     #increase capacity bar
-    capacity_bar['value']+=10
+    #capacity_bar['value']+=10
     
     #high risk label if capacity is >= 70%
     if capacity_bar['value'] >= 70:
